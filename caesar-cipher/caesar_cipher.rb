@@ -5,11 +5,11 @@ def caesar_cipher(string, shift_factor = 3)
   string = string.split('')
   string.each do |char| 
     if ('A'..'Z').include?(char)
-      puts "Capital Letter"
+      puts "#{char.ord}"
     elsif ('a'..'z').include?(char)
-      puts "lowercase letter"
+      puts "#{char.ord}"
     else
-      puts char
+      puts "#{char.ord}"
     end
   end
   puts "#{string} #{shift_factor}"
