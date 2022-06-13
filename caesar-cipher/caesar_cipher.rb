@@ -5,11 +5,19 @@ def caesar_cipher(string, shift_factor = 3)
   string = string.split('')
   string.each do |char| 
     if ('A'..'Z').include?(char)
-      puts "#{char.ord}"
+      char_index = char.ord + shift_factor
+      if (char_index > 90)
+        char_index = char_index - 26
+      end
+      puts "#{char_index}"
     elsif ('a'..'z').include?(char)
-      puts "#{char.ord}"
+      char_index = char.ord + shift_factor
+      if (char_index > 122)
+        char_index = char_index - 26
+      end
+      puts "#{char_index}"
     else
-      puts "#{char.ord}"
+      puts "#{char}"
     end
   end
   puts "#{string} #{shift_factor}"
