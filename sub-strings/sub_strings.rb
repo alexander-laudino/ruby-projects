@@ -13,4 +13,7 @@ def substrings(string, array = nil)
   puts "#{hash}"
 end
 
-substrings("Howdy partner, sit down! How's it going?", dictionary)
+puts "Enter a string"
+user_string = gets.chomp
+
+substrings(user_string, dictionary)
