@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class Account
   attr_reader :name, :balance
-  def initialize(name, balance=100)
+
+  def initialize(name, balance = 100)
     @name = name
     @balance = balance
   end
@@ -14,15 +17,12 @@ class Account
   end
 
   private
+
   def pin
     @pin = 1234
   end
 
-  private
   def pin_error
-    "Access denied: incorrect PIN."
+    'Access denied: incorrect PIN.'
   end
-
 end
-
-checking_account = Account.new("check-ing", 200_000)

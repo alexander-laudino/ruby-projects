@@ -1,16 +1,15 @@
-dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+# frozen_string_literal: true
+
+dictionary = %w[below down go going horn how howdy it i low own part partner sit]
 
 def substrings(string, array = nil)
-  hash = array.reduce(Hash.new(0)) do |words, count|
-    if string.include?(count)
-      words[count] += 1
-    end
-    words
+  hash = array.each_with_object(Hash.new(0)) do |count, words|
+    words[count] += 1 if string.include?(count)
   end
-  puts "#{hash}"
+  puts hash.to_s
 end
 
-puts "Enter a string"
+puts 'Enter a string'
 user_string = gets.chomp
 
 substrings(user_string, dictionary)
