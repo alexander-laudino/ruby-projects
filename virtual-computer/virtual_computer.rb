@@ -19,5 +19,3 @@ class Computer
     @@users
   end
 end
-
-my_computer = Computer.new('dradis', 'no_pass')
