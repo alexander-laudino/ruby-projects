@@ -6,6 +6,7 @@ class TicTacToe
   def initialize
     @players = ['', '']
     @game_board = Array.new(3) { Array.new(3, ' ') }
+    select_marker
   end
 
   def select_marker
@@ -32,7 +33,5 @@ class TicTacToe
 end
 
 new_game = TicTacToe.new
-
-new_game.select_marker
 
 new_game.print_board
