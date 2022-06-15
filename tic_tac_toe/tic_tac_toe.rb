@@ -1,4 +1,8 @@
 class TicTacToe
+  X = 'X'
+  O = 'O'
+
+  players = ['', '']
   game_board = Array.new(3) { Array.new(3, ' ') }
 
   def print_board(_array)
