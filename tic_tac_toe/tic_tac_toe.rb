@@ -15,6 +15,7 @@ class TicTacToe
       binding.pry
       if %w[X O].include?(player_one)
         @players[0] = player_one
+        @players[1] = @players[0] == X ? O : X
         break
       else
         puts 'Incorrect input: Please enter X or O'
