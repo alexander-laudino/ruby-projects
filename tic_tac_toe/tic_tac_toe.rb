@@ -4,11 +4,15 @@ class TicTacToe
   X = 'X'
   O = 'O'
   @winning_combos = []
+  @winner = false
 
   def initialize
     @players = ['', '']
     @game_board = Array.new(3) { Array.new(3, ' ') }
     select_markers
+    play_round
+    play_round
+    play_round
   end
 
   def select_markers
@@ -37,6 +41,7 @@ class TicTacToe
       @game_board[row][column] = @game_board[row][column] == ' ' ? @players[turn] : next
       print_board
       update_winning_combos
+      binding.pry
       break
     end
   end
@@ -44,8 +49,11 @@ class TicTacToe
   def play_round
     puts "Player 1: Place #{@players[0]}"
     select_square
+    check_for_winner
+    puts 'true' if @winner == true
     puts "Player 2: Place #{@players[1]}"
     select_square 1
+    check_for_winner 1
   end
 
   def update_winning_combos
@@ -58,6 +66,12 @@ class TicTacToe
     diag_one = [@game_board[0][0], @game_board[1][1], @game_board[2][2]]
     diag_two = [@game_board[0][2], @game_board[1][1], @game_board[2][0]]
     @winning_combos = [top_row, middle_row, bottom_row, first_column, second_column, third_column, diag_one, diag_two]
+  end
+
+  def check_for_winner(turn = 0)
+    @winning_combos.each do |value|
+      @winner = true if value.all? { |value| value == @players[turn] }
+    end
   end
 
   private
