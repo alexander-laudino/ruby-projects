@@ -33,11 +33,27 @@ class TicTacToe
       puts 'Select square to place marker'
       puts 'Enter row: 1 - 3'
       row = gets.chomp.to_i
-      (1..3).include?(row) ? row -= 1 : next
+      if (1..3).include?(row)
+        row -= 1
+      else
+        puts 'Invalid row'
+        next
+      end
       puts 'Enter column: 1 - 3'
       column = gets.chomp.to_i
-      (1..3).include?(column) ? column -= 1 : next
-      @game_board[row][column] = @game_board[row][column] == ' ' ? @players[turn] : next
+      if (1..3).include?(column)
+        column -= 1
+      else
+        puts 'Invalid column'
+        next
+      end
+      if @game_board[row][column] == ' '
+        @game_board[row][column] = @players[turn]
+      else
+        puts 'Square already selects, please choose another'
+        print_board
+        next
+      end
       print_board
       update_winning_combos
       binding.pry
