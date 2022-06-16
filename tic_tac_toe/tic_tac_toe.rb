@@ -3,10 +3,13 @@ require 'pry-byebug'
 class TicTacToe
   X = 'X'
   O = 'O'
+  @winning_combos = []
+
   def initialize
     @players = ['', '']
     @game_board = Array.new(3) { Array.new(3, ' ') }
     select_markers
+    play_round
     play_round
   end
 
@@ -42,8 +45,17 @@ class TicTacToe
   def play_round
     puts "Player 1: Place #{@players[0]}"
     select_square
+    binding.pry
+    update_winning_combos
     puts "Player 2: Place #{@players[1]}"
     select_square 1
+    update_winning_combos
+  end
+
+  def update_winning_combos
+    @winning_combos =
+      [@game_board[0], @game_board[1], @game_board[2],
+       [@game_board[0][0], @game_board[1][0], @game_board[2][0]], [@game_board[0][1], @game_board[1][1], @game_board[2][1]], [@game_board[0][2], @game_board[1][2], @game_board[2][2]], [@game_board[0][0], @game_board[1][1], @game_board[2][2]], [@game_board[0][2], @game_board[1][1], @game_board[2][0]]]
   end
 
   private
