@@ -15,6 +15,9 @@ class TicTacToe
   private
 
   def select_markers
+    puts ''
+    puts 'Welcome to Tic Tac Toe'
+    puts ''
     puts 'Player 1 please choose X or O'
     loop do
       player_one = gets.chomp
@@ -56,17 +59,18 @@ class TicTacToe
       end
       print_board
       update_winning_combos
-      binding.pry
       break
     end
   end
 
   def play_round
+    puts ''
     puts "Player 1: Place #{@players[0]}"
     select_square
     check_for_winner
     return 'Player 1' if @winner == true
 
+    puts ''
     puts "Player 2: Place #{@players[1]}"
     select_square 1
     check_for_winner 1
@@ -95,15 +99,16 @@ class TicTacToe
     select_markers
     game_won = nil
     game_won = play_round while game_won.nil?
-    print_board
     puts "#{game_won} wins"
   end
 
   def print_board
+    puts ''
     @game_board.each_with_index do |value, index|
       puts "#{value[0]}|#{value[1]}|#{value[2]}"
       puts '-----' if index != 2
     end
+    puts ''
   end
 end
 
