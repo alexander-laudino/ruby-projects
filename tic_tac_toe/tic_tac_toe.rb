@@ -7,7 +7,7 @@ class TicTacToe
     @players = ['', '']
     @game_board = Array.new(3) { Array.new(3, ' ') }
     select_markers
-    print_board
+    play_round
   end
 
   def select_markers
@@ -34,8 +34,16 @@ class TicTacToe
       column = gets.chomp.to_i
       (1..3).include?(column) ? column -= 1 : next
       @game_board[row][column] = @game_board[row][column] == ' ' ? @players[turn] : next
+      print_board
       break
     end
+  end
+
+  def play_round
+    puts "Player 1: Place #{@players[0]}"
+    select_square
+    puts "Player 2: Place #{@players[1]}"
+    select_square 1
   end
 
   private
