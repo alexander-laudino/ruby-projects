@@ -9,11 +9,10 @@ class TicTacToe
   def initialize
     @players = ['', '']
     @game_board = Array.new(3) { Array.new(3, ' ') }
-    select_markers
-    play_round
-    play_round
-    play_round
+    play_game
   end
+
+  private
 
   def select_markers
     puts 'Player 1 please choose X or O'
@@ -50,10 +49,12 @@ class TicTacToe
     puts "Player 1: Place #{@players[0]}"
     select_square
     check_for_winner
-    puts 'true' if @winner == true
+    return 'Player 1' if @winner == true
+
     puts "Player 2: Place #{@players[1]}"
     select_square 1
     check_for_winner 1
+    return 'Player 2' if @winner == true
   end
 
   def update_winning_combos
@@ -74,7 +75,13 @@ class TicTacToe
     end
   end
 
-  private
+  def play_game
+    select_markers
+    game_won = nil
+    game_won = play_round while game_won.nil?
+    print_board
+    puts "#{game_won} wins"
+  end
 
   def print_board
     @game_board.each_with_index do |value, index|
