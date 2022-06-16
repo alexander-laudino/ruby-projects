@@ -1,4 +1,4 @@
-#require 'pry-byebug'
+# require 'pry-byebug'
 
 class TicTacToe
   X = 'X'
@@ -91,7 +91,7 @@ class TicTacToe
 
   def check_for_winner(turn = 0)
     @winning_combos.each do |value|
-      @winner = true if value.all? { |value| value == @players[turn] }
+      @winner = true if value.all? { |row| row == @players[turn] }
     end
   end
 
